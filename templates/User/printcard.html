@@ -1,0 +1,29 @@
+<include file="user" />
+<div class="ss_nav col-sm-9" style="margin-top:20px;">
+    <p class="alert alert-info">准考证<span class="glyphicon glyphicon-menu-right"></span></p>
+    <table class="table" style="margin-bottom:100px;">
+      <tr class="info">
+        <td>考试时间</td>
+        <td>考试科目</td>
+        <td>考试地点</td>
+        <td>座次</td>
+        <td>打印准考证</td>
+      </tr>
+      <tr class="primary">
+        <td><?=$time?></td>
+        <td><?=$subject?></td>
+        <td><?=$real_address?></td>
+        <td><?=$seat_num?></td>
+        <td><button class="btn btn-primary xbtn" type="button" id="pri">打印</button></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  </div>
+<script>
+$(function(){
+	$('#pri').click(function(){
+		location.href="printcard2.html";
+	})
+})
+</script>

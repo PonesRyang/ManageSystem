@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '1g+tj^0a@tjkh5j9b+t!d!%$5j&#=o%&uitw#9m@mjp*ehlm2&'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'port',
+    'window',
 ]
 
 MIDDLEWARE = [
@@ -49,14 +48,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'port.middlewares.login_authentication_middleware',
 ]
+
+# EXCLUDE_URL = (
+#     'login/',
+#     'logout/',
+# )
 
 ROOT_URLCONF = 'ManageSystem.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ManageSystem.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -86,7 +90,6 @@ DATABASES = {
         'TTME_ZONE': 'Asia/Chongqing'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -106,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -120,26 +122,22 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 5,
+    'PAGE_SIZE': 10,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api.auths.AllowGetAuthentication',
-        'api.auths.CustomAuthentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'api.auths.AllowGetAuthentication',
+    #     'api.auths.CustomAuthentication',
+    # ),
     # # 配置默认权限
     # "DEFAULT_PERMISSION_CLASSES": (
     #     "api.auths.CustonAythorization",
     # ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'api.auths.CustomAuthorization',
-    )
 }
 
 CACHES = {

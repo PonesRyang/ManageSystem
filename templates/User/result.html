@@ -1,0 +1,22 @@
+<include file="user" />
+<div class="ss_nav col-sm-9" style="margin-top:20px;">
+    <p class="alert alert-danger">考试结果<span class="glyphicon glyphicon-menu-right"></span></p>
+    <table class="table" style="margin-bottom:100px;">
+      <tr class="info">
+        <td>考试时间</td>
+        <td>考试科目</td>
+        <td>准考证号</td>
+        <td>考试结果</td>
+      </tr>
+	  <foreach name="examHistory" item="v">
+      <tr class="primary">
+        <td>{$v.time}</td>
+        <td>{$v.subject}</td>
+        <td>{$v.examNumber}</td>
+        <td>{$v.result}</td>
+      </tr>
+      </foreach>
+    </table>
+  </div>
+  </div>
+  </div>

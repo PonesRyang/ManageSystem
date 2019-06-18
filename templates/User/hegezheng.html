@@ -1,0 +1,16 @@
+<include file="user" />
+<div class="hgcard col-sm-9" style="margin-top:20px;">
+    <p class="alert alert-warning">合格证查看<span class="glyphicon glyphicon-menu-right"></span></p>
+	<p class="text-success h3">请用户查看考试结果是否通过考试<br>若通过则可点击下面的按钮预览并打印合格证</p>
+    <button class="btn btn-primary" type="button" style="float:right; margin-top:100px;" id="hebtn">预览合格证</button>
+  </div>
+  </div>
+  </div>
+
+<script>
+$(function(){
+	$('#hebtn').click(function(){
+		location.href="printzs.html";
+	})
+})
+</script>

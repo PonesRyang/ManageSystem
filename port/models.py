@@ -50,7 +50,10 @@ class UserScheduling(models.Model):
 class Scheduling(models.Model):
     scheduling_id = models.AutoField(primary_key=True)
     scheduling_name = models.CharField(max_length=20,unique=True)
-    scheduling_time = models.CharField(unique=True, max_length=10)
+    scheduling_time = models.CharField(unique=False, max_length=20)
+
+    def __str__(self):
+        return self.scheduling_name
 
     class Meta:
         db_table = 'tb_scheduling'
@@ -64,12 +67,13 @@ class Event(models.Model):
     event_applicant = models.CharField(max_length=10)
     applicant_tel = models.CharField(max_length=12)
     event_addr = models.CharField(max_length=50)
+    is_dealing = models.BooleanField(default=False)
     event_adder = models.ForeignKey(to='User', on_delete=models.PROTECT, db_column='adder_user_id',
                                     related_name='adder_user')
     event_solve = models.ForeignKey(to='User', on_delete=models.PROTECT, db_column='solver_user_id',
-                                    related_name='solver_user')
+                                    related_name='solver_user',null=True)
     event_main_deal = models.ForeignKey(to='User', on_delete=models.PROTECT, db_column='main_deal_user_id',
-                                        related_name='main_deal')
+                                        related_name='main_deal',null=True)
     event_auxiliary_deal = models.ForeignKey(to='User', on_delete=models.PROTECT, db_column='auxiliary_deal_user_id',
                                              related_name='auxiliary_deal', null=True)
     event_start_time = models.DateTimeField(auto_now_add=True)
@@ -84,6 +88,10 @@ class EventType(models.Model):
     type_id = models.AutoField(primary_key=True)
     type_name = models.CharField(max_length=20)
     type_score = models.IntegerField()
+    type_detail = models.CharField(max_length=255,null=True)
+
+    def __str__(self):
+        return self.type_name
 
     class Meta:
         db_table = 'tb_event_type'
@@ -92,10 +100,12 @@ class EventType(models.Model):
 class Leave(models.Model):
     leave_id = models.AutoField(primary_key=True)
     leave_user = models.ForeignKey(to='User',on_delete=models.PROTECT, db_column='user_id')
+    leave_change_user = models.ForeignKey(to='User',on_delete=models.PROTECT, db_column='change_user_id',
+                                           related_name='change_user')
     leave_time = models.DateField()
     leave_reason = models.CharField(max_length=255)
     is_permit = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'tb_leave'
-
+        unique_together = (('leave_user', 'leave_change_user'),)

@@ -1,0 +1,165 @@
+<include file="user" />
+<div class="m-modal" id="mod1">
+      <div class="m-modal-dialog">
+        <div class="m-top">
+          <h4 class="m-modal-title">
+            资料上传
+          </h4>
+          <span class="m-modal-close">&times;</span>
+        </div>
+        <div class="m-middle">
+        <form action="{:U('User/shenhe')}" class="form-horizontal" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="notpass" class="col-sm-12  control-label">上传电子资料(请上传.jpg格式图片) :</label>
+        <table class="table table-condensed">
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">本人1寸近期正面免冠白底彩照</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+照片<br>（如：张三照片）</td>
+            <td>
+              <div id="addCommodityIndex">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview1">
+                            <img id="imghead1" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg1').click();">
+                         </div>         
+                        <input type="file" name="upload1"onchange="previewImage(this,1)" style="display: none;" id="previewImg1">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">身份证正面扫描件</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+身份证+正面<br>（如：张三身份证正面）</td>
+            <td>
+              <div id="addCommodityIndex2">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview2">
+                            <img id="imghead" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg2').click();">
+                         </div>         
+                        <input type="file"  name="upload2" onchange="previewImage(this,2)" style="display: none;" id="previewImg2">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">身份证背面扫描件</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+身份证+背面<br>（如：张三身份证背面）</td>
+            <td>
+              <div id="addCommodityIndex3">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview3">
+                            <img id="imghead3" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg3').click();">
+                         </div>         
+                        <input type="file"  name="upload3"  onchange="previewImage(this,3)" style="display: none;" id="previewImg3">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">毕业证书扫描件</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+毕业证<br>（如：张三毕业证）</td>
+            <td>
+              <div id="addCommodityIndex4">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview4">
+                            <img id="imghead4" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg4').click();">
+                         </div>         
+                        <input type="file"   name="upload4" onchange="previewImage(this,4)" style="display: none;" id="previewImg4">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">职称证书扫描件</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+职称证<br>（如：张三职称证）</td>
+            <td>
+              <div id="addCommodityIndex5">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview5">
+                            <img id="imghead5" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg5').click();">
+                         </div>         
+                        <input type="file"   name="upload5" onchange="previewImage(this,5)" style="display: none;" id="previewImg5">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="info text-center" style="line-height: 60px;">从业证明、社保证明扫描件</td>
+            <td class="text-center" style="line-height: 60px;">文件名格式：姓名+从业社保证明<br>（如：张三从业社保证明）</td>
+            <td>
+              <div id="addCommodityIndex6">
+                <div class="input-group row">
+                    <div class="col-sm-12 big-photo">
+                      <div id="preview6">
+                            <img id="imghead6" border="0" src="__PUBLIC__images/photo_icon.png" width="100px" height="100px"  onclick="$('#previewImg6').click();">
+                         </div>         
+                        <input type="file"   name="upload6" onchange="previewImage(this,6)" style="display: none;" id="previewImg6">
+                    </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+        </table>
+      </div>  
+      <div class="m-bottom">
+      <div class="form-group">
+        <div class="col-sm-12 input-parent" style="margin-top:0px;margin-bottom:100px;">
+          <button type="reset" class="btn btn-default m-btn-cancel">取消</button>
+          <button type="submit" class="btn btn-primary m-btn-sure">上传</button>
+        </div>
+      </div>
+      </div>
+      </form> 
+  </div>
+</div>
+</div>
+<div class="ss_nav col-sm-9" style="margin-top:20px;">
+    <p class="alert alert-success">审核<span class="glyphicon glyphicon-menu-right"></span></p>
+    <table class="table" style="margin-bottom:100px;">
+      <tr class="success">
+	  <td>时间</td>
+	  <td>科目</td>
+      <td>审核状态</td>
+      <td>审核不过原因</td>
+      <td>重新上传</td>
+      </tr>
+      <tr class="primary">
+	  <td><?=$date?></td>
+	  <td><?=$subject?></td>
+        <td class="text-danger" id="ha" name="<?=$pass?>">待审核</td>
+        <td name="<?=$reason?>" id="reason"><?=$reason?></td>
+        <td><button class="btn btn-primary bn " type="button" name="<?=$pass?>" id="rebtn">重新上传</button></td>
+      </tr>
+    </table>
+</div>
+</div>
+</div>
+
+<script>
+	$(function(){
+	 var m1 = new MyModal.modal(function() {
+        alert("上传成功");
+      });
+	$('#rebtn').on("click", function() {
+        m1.show();
+      });
+	if($('#ha').attr('name')=='0'){
+		$('#ha').html('审核未通过');
+	}else{
+		$('#ha').html('审核通过');
+		$('#ha').next().html('')
+	}
+	if($('.bn').attr('name')==1){
+			$('.bn').attr('disabled','true');
+		}
+	})
+</script>

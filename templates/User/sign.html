@@ -1,0 +1,82 @@
+{% extends 'User/user.html' %}
+    {% block content %}
+
+<div class="ss_nav col-sm-9" style="margin-top:20px;">
+ <p class="alert alert-success">排班表<span class="glyphicon glyphicon-menu-right"></span></p>
+	<div class="ale col-sm-12 ">
+	<div class="content">
+	<ul class="bg">
+	<foreach name="zhuyiAll" item="z">
+	<li class="current">
+		<div class="panel panel-primary">
+			<div class="panel-heading " style="width:790px;height:45px;">{$z.title}<span style="float:right;">{$z.time}</span></div>
+				<div class="panel-body" style="width:790px;height:450px;">
+					{$z.detail}
+				</div>
+		</div>
+	</li>
+	</foreach>
+	</ul>
+	<!--左右箭头导航-->
+	<div class="btn1 btn_left"><</div>
+	<div class="btn1 btn_right">></div>
+   </div>
+  </div>
+</div>
+</div>
+</div>
+<br><br><br><br>
+
+<script type="text/javascript">
+	var index=0;
+	var timer;
+	//定时器：setTimeout（只执行一次） setInterval(每隔多长时间执行一次)
+	$(function(){
+		//找到所有的图片
+		var pic=$('.bg li');//找到所有的li
+		var lis=$('.indication li');
+	//找到所有的小圆点
+		pic.eq(0).addClass('current').siblings().removeClass("current");
+		function changepic(){
+			pic.eq(index).addClass('current').siblings().removeClass("current");
+			lis.eq(index).addClass('active').siblings().removeClass("current");
+		}
+		Showtime();
+		//点击圆点换图
+		lis.hover(function(){
+			index=$(this).index();
+			changepic();
+			clearInterval(timer);
+		},function(){
+			Showtime();
+		})
+		$('.btn_left').click(function(){
+			clearInterval(timer);
+			if (index == 0) {
+            index = $('.bg li').length;
+        }
+        index--;
+        changepic();
+        Showtime();
+		})
+		$('.btn_right').click(function(){
+			clearInterval(timer);
+			if (index == $('.bg li').length-1) {
+            index = -1;
+        }
+        index++;
+        changepic();
+        Showtime();
+		})
+		function Showtime() {
+    	timer = setInterval(function () {
+        index++;
+        if (index == $('.bg li').length) {
+            index = 0;
+        }
+        changepic();
+    },60000);
+    }
+	})
+</script>
+    {% endblock %}

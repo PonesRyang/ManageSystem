@@ -1,0 +1,61 @@
+{% extends 'User/user.html' %}
+    {% block content %}
+<div class="ss_nav col-sm-9" style="margin-top:20px;">
+    <p class="alert alert-success">所有事件<span class="glyphicon glyphicon-menu-right"></span></p>
+    <table class="table" style="margin-bottom:100px;">
+      <tr class="info">
+        <td>事件</td>
+        <td>开始时间</td>
+        <td>事件发起人</td>
+      </tr>
+       <tr class="primary">
+           <td><?=$date?></td>
+           <td><?=$subject?></td>
+           <td><?=$subject?></td>
+		<input type="hidden" name="flag" value="1"/>
+		<input type="hidden" name="date" value="<?=$date?>"/>
+        <td><button class="btn btn-primary bn" type="submit" name="<?=$baoming?>" id="baom">查看该事件</button></td>
+      </tr>
+    </table>
+</div>
+</div>
+</div>
+
+<script>
+$(function(){
+	$('#baom').click(function(){
+		var mydate=new Date();
+		var year=mydate.getFullYear();
+		var month=mydate.getMonth()+1;
+		var day=mydate.getDate();
+		var hour=mydate.getHours();
+		if(month=='11'){
+			if(day=='26')
+			{
+				if(hour>'19')
+				{
+					alert("报名时间已截止于2017年11月26日20时");
+					return false;
+				}
+			}
+			else if(day>'26')
+			{	
+				alert("报名时间已截止于2017年11月26日20时");
+				return false;
+			}
+		    
+		}
+		else if(month=='12')
+		{
+			alert("报名时间已截止于2017年11月26日20时");
+			return false;
+		}
+		
+	})
+		if($('.btn').attr('name')==1){
+			$('.btn').html("已报名");
+			$('.btn').attr('disabled','true');
+		}
+})
+</script>
+  {% endblock %}
