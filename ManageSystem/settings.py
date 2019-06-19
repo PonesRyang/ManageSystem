@@ -83,10 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ManageSystem',
-        'HOST': '47.102.219.72',
+        'HOST': '*',
         'RORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'Fengliang96.07.26',
+        'PASSWORD': '*',
         'TTME_ZONE': 'Asia/Chongqing'
     }
 }
@@ -145,7 +145,7 @@ CACHES = {
         # 使用第三方库django_redis提供缓存服务支撑
         'BACKEND': 'django_redis.cache.RedisCache',
         # 配置缓存服务器的URL
-        'LOCATION': ['redis://47.102.219.72:6379/2', ],
+        'LOCATION': ['redis:*', ],
         # 配置缓存的前缀
         'KEY_PREFIX': 'default',
         # 设置缓存相关选项
@@ -154,7 +154,7 @@ CACHES = {
             'CONNECTION_POOL_KWARGS': {
                 'max_connections': 128,
             },
-            'PASSWORD': 'fly0726zz',
+            'PASSWORD': '*',
 
         }
     },
@@ -162,7 +162,7 @@ CACHES = {
         # 使用第三方库django_redis提供缓存服务支撑
         'BACKEND': 'django_redis.cache.RedisCache',
         # 配置缓存服务器的URL
-        'LOCATION': ['redis://47.102.219.72:6379/1', ],
+        'LOCATION': ['redis://*', ],
         # 配置缓存的前缀
         'KEY_PREFIX': 'session',
         # 设置缓存相关选项
@@ -171,7 +171,7 @@ CACHES = {
             'CONNECTION_POOL_KWARGS': {
                 'max_connections': 128,
             },
-            'PASSWORD': 'fly0726zz',
+            'PASSWORD': '*',
 
         }
     },
